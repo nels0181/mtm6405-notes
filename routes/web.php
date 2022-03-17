@@ -14,5 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $title = 'My Notes App';
+
+    return view('notes', ['title' => $title]);
+});
+
+// notes is determined by its id
+// /notes/3
+Route::get('/notes/{note}', function ($id) {
+    $title = "Note {$id}";
+    $text = "This is note {$id}";
+
+    return view('note', ['title' => $title, 'text' => $text]);
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
